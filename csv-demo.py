@@ -8,8 +8,9 @@ def main():
     	.appName("Word Count") \
      	.config("com.databricks.spark.csv", "3") \
      	.getOrCreate()
-    
-    df = spark.read.csv("file:///C:/Spark-Python/firstapp/Scripts/source/emp_data.csv")
+         
+    df = spark.read.format('com.databricks.spark.csv').options(header='true', inferschema='true').load("file:///C:/Spark-Python/firstapp/Scripts/source/emp_data.csv")
+    type(df)
     df.show()
 
 if __name__ == "__main__":
